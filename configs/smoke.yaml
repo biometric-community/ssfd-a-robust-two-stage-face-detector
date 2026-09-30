@@ -1,0 +1,39 @@
+# Smoke / short run (not full paper protocol)
+paper:
+  slug: ssfd-a-robust-two-stage-face-detector
+  title: SSFD+ (smoke)
+source_code:
+  url: null
+data:
+  root: ../../datasets/wider-face
+  max_train_samples: 16
+  max_val_samples: 8
+model:
+  name: ssfd_plus
+  min_side: 480
+  max_long: 800
+  pretrained_backbone: true
+  use_cam: true
+train:
+  batch_size: 1
+  epochs: 1
+  lr: 0.001
+  lr_gamma: 0.1
+  lr_decay_epoch: 7
+  momentum: 0.9
+  weight_decay: 0.0005
+  num_workers: 2
+  log_every: 5
+  use_amp: true
+eval:
+  batch_size: 1
+  score_thresh: 0.05
+  nms_thresh: 0.5
+paths:
+  checkpoint_dir: outputs/checkpoints
+  log_dir: outputs/logs
+  pred_dir: outputs/predictions
+  figure_dir: outputs/figures
+report:
+  title: SSFD+ Smoke Report
+device: cuda
